@@ -11,37 +11,35 @@
 void printUsage(char *s)
 {
         fprintf(stderr,"usage %s -c NumRanChars -b baseValue\n",s);
+        fprintf(stderr,"usage %s -c a -b 16 \n",s);
+        fprintf(stderr,"usage %s -c 100\n",s);
 }
 
 int
 main (int argc, char **argv)
 {
-    int aflag = 0;
-    int bflag = 0;
     char *cvalue = DEFAULT_LENGTH;
     int index;
-    int c,base;
+    int getOptRetVal,base=0;
     long length = 0;
     char *endptr;
 
 
     opterr = 0;
 
-    while ((c = getopt (argc, argv, "ab:c:")) != -1)
-        switch (c)
+    while ((getOptRetVal = getopt (argc, argv, "ab:c:")) != -1)
+        switch (getOptRetVal)
         {
         case 'a':
-            aflag = 1;
             break;
         case 'b':
-            bflag = 1;
             base = atoi(optarg);
             break;
         case 'c':
             cvalue = optarg;
             break;
         case '?':
-            printUsage(argv[0]);
+
             if (optopt == 'c')
                 fprintf (stderr, "Option -%c requires an argument.\n", optopt);
             else if (optopt == 'b')
@@ -52,6 +50,7 @@ main (int argc, char **argv)
                 fprintf (stderr,
                          "Unknown option character `\\x%x'.\n",
                          optopt);
+            printUsage(argv[0]);
             return 1;
         default:
             printUsage(argv[0]);
