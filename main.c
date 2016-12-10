@@ -8,6 +8,11 @@
 
 #define DEFAULT_LENGTH "80"
 
+void printUsage(char *s)
+{
+        fprintf(stderr,"usage %s -c NumRanChars -b baseValue\n",s);
+}
+
 int
 main (int argc, char **argv)
 {
@@ -36,6 +41,7 @@ main (int argc, char **argv)
             cvalue = optarg;
             break;
         case '?':
+            printUsage(argv[0]);
             if (optopt == 'c')
                 fprintf (stderr, "Option -%c requires an argument.\n", optopt);
             else if (optopt == 'b')
@@ -48,6 +54,7 @@ main (int argc, char **argv)
                          optopt);
             return 1;
         default:
+            printUsage(argv[0]);
             abort ();
         }
 
