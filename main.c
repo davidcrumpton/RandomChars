@@ -7,6 +7,7 @@
 #include <limits.h>
 
 #define DEFAULT_LENGTH "80"
+#define VERSION "1.0.0"
 
 void printUsage(char *s)
 {
