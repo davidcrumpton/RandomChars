@@ -13,6 +13,7 @@ void printUsage(char *s)
         fprintf(stderr,"usage %s -c NumRanChars -b baseValue\n",s);
         fprintf(stderr,"usage %s -c a -b 16 \n",s);
         fprintf(stderr,"usage %s -c 100\n",s);
+        fprintf(stderr,"    default number of random characters is %s\n", DEFAULT_LENGTH);
 }
 
 int
