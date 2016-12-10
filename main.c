@@ -6,7 +6,7 @@ int
 main(void)
 {
     /* Length of the password */
-    unsigned short int length = 8;
+    unsigned short int length = 88;
 
     /* Seed number for rand() */
     srand((unsigned int) time(0));
