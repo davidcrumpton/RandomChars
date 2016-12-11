@@ -29,7 +29,7 @@ main (int argc, char **argv)
 
     opterr = 0;
 
-    while ((getOptRetVal = getopt (argc, argv, "ab:")) != -1)
+    while ((getOptRetVal = getopt (argc, argv, "ahb:v")) != -1)
         switch (getOptRetVal)
         {
         case 'a':
@@ -37,6 +37,10 @@ main (int argc, char **argv)
         case 'b':
             base = atoi(optarg);
             break;
+        case 'v':
+        	printf("%s: %s\n", argv[0], VERSION);
+        	return 1;
+        case 'h':
         case '?':
             if (optopt == 'b')
                  fprintf (stderr, "Option -%c requires an argument.\n", optopt);
