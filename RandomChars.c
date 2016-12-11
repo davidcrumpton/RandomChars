@@ -38,7 +38,7 @@ main (int argc, char **argv)
             base = atoi(optarg);
             break;
         case 'v':
-        	printf("%s: %s\n", argv[0], VERSION);
+        	printf("%s is at version %s\n", argv[0], VERSION);
         	return 1;
         case 'h':
         case '?':
