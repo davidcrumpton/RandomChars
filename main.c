@@ -11,9 +11,9 @@
 
 void printUsage(char *s)
 {
-        fprintf(stderr,"usage %s -c NumRanChars -b baseValue\n",s);
-        fprintf(stderr,"usage %s -c a -b 16 \n",s);
-        fprintf(stderr,"usage %s -c 100\n",s);
+        fprintf(stderr,"usage %s -b baseValue NumOfRandChars\n",s);
+        fprintf(stderr,"usage %s -b 16 a\n",s);
+        fprintf(stderr,"usage %s 100\n",s);
         fprintf(stderr,"    default number of random characters is %s\n", DEFAULT_LENGTH);
 }
 
@@ -29,7 +29,7 @@ main (int argc, char **argv)
 
     opterr = 0;
 
-    while ((getOptRetVal = getopt (argc, argv, "ab:c:")) != -1)
+    while ((getOptRetVal = getopt (argc, argv, "ab:")) != -1)
         switch (getOptRetVal)
         {
         case 'a':
@@ -37,14 +37,8 @@ main (int argc, char **argv)
         case 'b':
             base = atoi(optarg);
             break;
-        case 'c':
-            cvalue = optarg;
-            break;
         case '?':
-
-            if (optopt == 'c')
-                fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-            else if (optopt == 'b')
+            if (optopt == 'b')
                  fprintf (stderr, "Option -%c requires an argument.\n", optopt);
             else if (isprint (optopt))
                 fprintf (stderr, "Unknown option `-%c'.\n", optopt);
@@ -59,7 +53,10 @@ main (int argc, char **argv)
             abort ();
         }
 
-    for (index = optind; index < argc; index++)
+    if(++optind == argc) {
+	cvalue = argv[--argc];
+     }
+    for (index = optind; index < argc; index++) 
         printf ("Non-option argument %s\n", argv[index]);
 
     errno = 0;    /* To distinguish success/failure after call */
