@@ -29,7 +29,7 @@ main (int argc, char **argv)
 
     opterr = 0;
 
-    while ((getOptRetVal = getopt (argc, argv, "ahb:v")) != -1)
+    while ((getOptRetVal = getopt (argc, argv, "ab:hv")) != -1)
         switch (getOptRetVal)
         {
         case 'a':
