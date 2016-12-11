@@ -1,2 +1,2 @@
-# RandomNo
-Random Number Playing
+# RandomChars
+Random Character Toy
