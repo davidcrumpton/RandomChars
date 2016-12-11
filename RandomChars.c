@@ -54,7 +54,7 @@ main (int argc, char **argv)
         }
 
     if(++optind == argc) {
-	cvalue = argv[--argc];
+	cvalue = argv[argc-1];
     }
     for (index = optind; index < argc; index++) 
         printf ("Non-option argument %s\n", argv[index]);
